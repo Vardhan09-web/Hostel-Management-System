@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Detail</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'complaint_styles.css' %}">
+</head>
+<body>
+    <div class="complaint-detail-container">
+        <a href="{% url 'incharge_dashboard' %}" class="back-btn">Back to Dashboard</a>
+        <h1>Complaint Detail</h1>
+        <p><strong>Category:</strong> {{ complaint.category }}</p>
+        <p><strong>Description:</strong> {{ complaint.description }}</p>
+        <p><strong>Status:</strong> {{ complaint.status }}</p>
+        <p><strong>Date Filed:</strong> {{ complaint.date|date:"Y-m-d H:i:s" }}</p>
+        {% if complaint.response %}
+        <p><strong>Response:</strong> {{ complaint.response }}</p>
+        {% endif %}
+
+        {% if request.session.hstlin_id and complaint.status != 'resolved' %}
+        <form method="POST" class="response-form">
+            {% csrf_token %}
+            <label for="response">Response:</label>
+            <textarea name="response" id="response" rows="4" cols="50"></textarea>
+            <br>
+            <button type="submit">Resolve Complaint</button>
+        </form>
+        {% endif %}
+    </div>
+</body>
+</html>

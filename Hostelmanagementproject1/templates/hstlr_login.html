@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hosteller Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'hstlr_loginstyles.css' %}">
+</head>
+<body>
+    <div class="background"></div>
+    <form method="post" class="form" action="{% url 'hstlr_login' %}">
+        {% csrf_token %}
+        
+        {% if error_message %}
+            <div class="alert error">{{ error_message }}</div>
+        {% endif %}
+        {% if success_message %}
+            <div class="alert success">{{ success_message }}</div>
+        {% endif %}
+        
+        <div class="img">
+            <img src="{% static 'images/user-icon2.jpg' %}">
+        </div>
+        <h1>HOSTELLER LOGIN</h1>
+        
+        <h4>Enter Registered Email and Password</h4>
+        <label for="email">Email:</label>
+        <input type="email" name="hstlr_email" id="email" value="{{ hstlr_email|default:'' }}" placeholder="Enter your email" required>
+        <label for="password">Password:</label>
+        <input type="password" name="hstlr_passwd" id="password" placeholder="Enter your password" required>
+        <button type="submit">Login</button><br>
+        <a href="{% url 'password_reset' %}">Forgot Password?</a>
+        <p>Don't have an account? <a href="{% url 'hstlr_registration' %}">Sign Up Here</a></p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,107 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ecf0e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 60px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px; /* Adjusted max-width for better form size */
+    max-height: 80vh; /* Added max-height to limit vertical size */
+    overflow-y: auto; /* Enable scrolling if content exceeds max-height */
+    margin: 20px;
+    background-image: url('https://t3.ftcdn.net/jpg/05/73/54/72/360_F_573547219_z5Me421SBfTKoc15GRMyebq0vaXM9rUd.jpg'); /* Add your background image here */
+    background-size: cover;
+    background-position: center;
+}
+
+h2 {
+    margin-bottom: 50px;
+    color: #333;
+    text-align: center;
+    font-size: 25px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.form-group i {
+    margin-right: 10px;
+}
+
+input, textarea, select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    transition: border-color 0.3s;
+    margin-left: 20px;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button i {
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #004080;
+    transform: translateY(2px);
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 16px;
+    }
+}

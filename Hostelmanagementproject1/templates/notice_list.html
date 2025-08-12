@@ -1,0 +1,103 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+    <style>
+        /* Container styling */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Create New Notice link styling */
+        .create-notice {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .create-notice:hover {
+            background-color: #45a049;
+        }
+
+        /* Notice list styling */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        ul li a:hover {
+            color: #0056b3;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .create-notice {
+                padding: 8px 16px;
+            }
+
+            ul li {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container h2 {
+                font-size: 24px;
+            }
+
+            .create-notice {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+
+            ul li {
+                padding: 8px;
+            }
+        }
+    </style>
+
+    <div class="container">
+        <h2>Notice List</h2>
+        <a class="create-notice" href="{% url 'create_notice' %}">Create New Notice</a>
+        <ul>
+            {% for notice in notices %}
+                <li>
+                    <a href="{% url 'notice_detail' notice.pk %}">{{ notice.title }}</a> - {{ notice.created_at }}
+                </li>
+            {% empty %}
+                <li>No notices available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

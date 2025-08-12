@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ notice.title }}</title>
+    {%load static%}
+  <link rel="stylesheet" href="{% static 'about_us_styles.css' %}">
+</head>
+<body>
+    <div class="notice-container">
+        <h2>{{ notice.title }}</h2>
+        <p>{{ notice.content }}</p>
+        <p><em>Posted on {{ notice.created_at }}</em></p>
+       <b><button> <a  id="toggle-theme" href="{% url 'admin_dashboard' %}">back</b></button></a></div>
+        </div>
+    </div>
+     {% comment %} <script src="{% static 'js/scripts.js' %}"></script>  {% endcomment %}
+</body>
+</html>

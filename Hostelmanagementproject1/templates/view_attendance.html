@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Incharge Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'incharge_dstyles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="{% static 'images/User0icon.png' %}" alt="Incharge Avatar">
+            <h2>Incharge - HMS</h2>
+        </div>
+        <ul>
+            <li><a href="{% url 'incharge_dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="{% url 'room_allocation_details' %}"><i class="fas fa-bed"></i> Room Allocations</a></li>
+            <li><a href="{% url 'attendance_list' %}"><i class="fas fa-calendar-check"></i> Hosteller Attendance</a></li>
+            <li><a href="{% url 'add_room' %}"><i class="fas fa-plus-circle"></i> Add Rooms</a></li>
+            <li><a href="{% url 'complaint_list' %}"><i class="fas fa-bell"></i> Complaints</a></li>
+            <li><a href="{% url 'create_notice' %}"><i class="fa fa-power-off"></i>Sign Out</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Hostel Management System - Incharge Panel</h1>
+            <a href="{% url 'hstlin_logout' %}" class="logout-btn">Logout</a>
+        </header>
+    <div class="main-content">
+        <h1>View Attendance - {{ branch }}</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Hosteller Name</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for attendance in attendances %}
+                <tr>
+                    <td>{{ attendance.date }}</td>
+                    <td>{{ attendance.hosteller.hstlr_fname }} {{ attendance.hosteller.hstlr_lname }}</td>
+                    <td>{{ attendance.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

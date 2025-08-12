@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pending Incharges</title>
+    <a href="{% url 'admin_dashboard' %}" class="back-btn">Back to Dashboard</a>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'pending_instyles.css' %}">
+</head>
+<body>
+    <h2>Pending Hostel Incharge </h2>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+        {% for incharge in pending_incharges %}
+        <tr>
+            <td>{{ incharge.fname }}</td>
+            <td>{{ incharge.lname }}</td>
+            <td>{{ incharge.email }}</td>
+            <td>{{ incharge.phn }}</td>
+            <td>
+                <a href="{% url 'approve_incharge' incharge.email %}">Approve</a> | 
+                <a href="{% url 'reject_incharge' incharge.email %}">Reject</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

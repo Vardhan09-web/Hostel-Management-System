@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Allocation Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'incharge_dstyles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    {% comment %} <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            .back-btn {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+        }
+    </style> {% endcomment %}
+
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="{% static 'images/User0icon.png' %}" alt="Incharge Avatar">
+            <h2>Incharge - HMS</h2>
+        </div>
+        <ul>
+            <li><a href="{% url 'incharge_dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="{% url 'room_allocation_details' %}"><i class="fas fa-bed"></i> Room Allocations</a></li>
+            <li><a href="{% url 'attendance_list' %}"><i class="fas fa-calendar-check"></i> Hosteller Attendance</a></li>
+            <li><a href="{% url 'add_room' %}"><i class="fas fa-plus-circle"></i> Add Rooms</a></li>
+            <li><a href="{% url 'complaint_list' %}"><i class="fas fa-bell"></i> Complaints</a></li>
+            <li><a href="{% url 'admin_logout' %}"><i class="fa fa-power-off"></i>Sign Out!</a></li> 
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Hostel Management System - Incharge Panel</h1>
+            <a href="{% url 'hstlin_logout' %}" class="logout-btn">Logout</a>
+        </header>
+    <div class="container">
+        <h2>Room Allocation Details</h2>
+        {% comment %} <a href="{% url 'incharge_dashboard' %}" class="back-btn">Back to Dashboard</a> {% endcomment %}
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Request Date</th>
+                        <th>Hosteller ID</th>
+                        <th>Assigned Room Number</th>
+                        <th>Is Approved</th>
+                        <th>Is Pending</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for request in room_requests %}
+                    <tr>
+                        <td>{{ request.id }}</td>
+                        <td>{{ request.request_date }}</td>
+                        <td>{{ request.hosteller_id }}</td>
+                        <td>{{ request.assigned_room_number }}</td>
+                        <td>{{ request.is_approved }}</td>
+                        <td>{{ request.is_pending }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

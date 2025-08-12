@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notice Board</title>{%load static%}
+  <link rel="stylesheet" href="{% static 'about_us_styles.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h2>Notice Board</h2>
+    <ul>
+      {% for notice in notices %}
+        <li>
+          <h3>{{ notice.title }}</h3>
+          <p>{{ notice.content }}</p>
+          <small>Posted by {{ notice.posted_by }} on {{ notice.created_at }}</small>
+        </li>
+      {% empty %}
+    </ul>
+      <p>No notices available.</p>
+    {% endfor %}
+  </div>
+</body>
+</html>

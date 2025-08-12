@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}?v=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="{% static 'js/script.js' %}"></script>
+</head>
+<body>
+<div class="home-container">
+
+    <div class="header">
+        <img src="{% static 'images/mainhms-icon.jpeg' %}" alt="Hostel Management Logo" class="logo">
+        <h1>Hostel Management System</h1>
+    </div>
+
+    <ul class="nav"> 
+        <li id='hm'><a href="{% url 'Home_page' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="{% url 'login' %}"><i class="fa-solid fa-user-shield"></i> Admin</a></li>
+        <li><a href="{% url 'hstlin_login' %}"><i class="fa-solid fa-user-tie"></i> In-Charge</a></li>
+        <li><a href="{% url 'hstlr_login' %}"><i class="fa-solid fa-user"></i> Hosteller</a></li>
+        <li><a href="{% url 'contact_us' %}"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
+    </ul>
+    
+    <div class="background-container">
+        <img src="{% static 'images/hmsimg1.jpg' %}" class="background-image" alt="background image">
+        <div class="overlay">
+            <h2>Welcome to our Hostel Management System</h2>
+<p>"Our HMS platform provides a simplified hostel life with seamless management of users, rooms, attendance, and complaints."</p>
+        </div>
+    </div>
+
+    <h2 class="hh"><b>Online Services</b></h2>
+    <div class="services-container">
+        <div class="service">
+            <a href="{% url 'login' %}"><img src="{% static 'images/admin-icon1.jpg' %}" alt="admin"></a>
+            <h2>Admin</h2>
+        </div>
+        <div class="service">
+            <a href="{% url 'hstlin_login' %}"><img src="{% static 'images/incharge-icon.jpeg' %}" alt="In-Charge"></a>
+            <h2>In-Charge</h2>
+        </div>
+        <div class="service">
+            <a href="{% url 'hstlr_login' %}"><img src="{% static 'images/hosteler-icon.jpg' %}" alt="Hosteller"></a>
+            <h2>Hosteller</h2>
+        </div>
+    </div>
+
+    <footer>
+        <a href="{% url 'about_us'%}">About Us</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="{%url 'contact_us' %}">Help</a>
+        <p>&copy; 2024 Hostel Management System</p>
+    </footer>
+</div>
+</body>
+</html>

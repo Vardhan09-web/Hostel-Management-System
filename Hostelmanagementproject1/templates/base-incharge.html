@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hostel Management System{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'incharge_dstyles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="{% static 'images/User0icon.png' %}" alt="Incharge Avatar">
+            <h2>Incharge - HMS</h2>
+        </div>
+        <ul>
+            <li><a href="{% url 'incharge_dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="{% url 'room_allocation_details' %}"><i class="fas fa-bed"></i> Room Allocations</a></li>
+            <li><a href="{% url 'attendance_list' %}"><i class="fas fa-calendar-check"></i> Hosteller Attendance</a></li>
+            <li><a href="{% url 'add_room' %}"><i class="fas fa-plus-circle"></i> Add Rooms</a></li>
+            <li><a href="{% url 'complaint_list' %}"><i class="fas fa-bell"></i> Complaints</a></li>
+            <li><a href="{% url 'create_notice' %}"><i class="fas fa-sticky-note"></i> Notice</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Hostel Management System - Incharge Panel</h1>
+            <a href="{% url 'hstlin_logout' %}" class="logout-btn">Logout</a>
+        </header>
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>

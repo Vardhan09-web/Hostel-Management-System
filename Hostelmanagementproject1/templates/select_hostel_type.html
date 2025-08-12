@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Select Hostel Type</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('hostel.png') no-repeat center center;
+            background-size: cover;
+        }
+
+        h1 {
+            color: #0b0000;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        /* Image Container */
+        .container {
+            background-color: rgb(203 190 190 / 26%);
+            padding: 130px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .img {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 130px;
+            margin-top: 40px;
+        }
+
+        .img div {
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .img img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .img img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .img h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .img {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .img img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% load static %}
+    <div class="container">
+        <h1>Select Hostel Type</h1>
+        <div class="img">
+            <div>
+                <a href="{% url 'hstlr_login' %}"><img src="{% static 'images/girl-img.jpg' %}" alt="girl image"></a>
+                <h2>Girls Hostel</h2>
+            </div>
+            <div>
+                <a href="{% url 'hstlr_login' %}"><img src="{% static 'images/boys-img.jpg' %}" alt="boy image"></a>
+                <h2>Boys Hostel</h2>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

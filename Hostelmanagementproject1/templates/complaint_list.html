@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Incharge Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'incharge_dstyles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'complaint_styles.css' %}">
+    <style>
+        .table-container {
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        .responsive-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .responsive-table th, .responsive-table td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        .responsive-table th {
+            background-color: #333;
+            color: white;
+        }
+        .responsive-table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        .responsive-table a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .responsive-table a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .responsive-table th, .responsive-table td {
+                padding: 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            .responsive-table th, .responsive-table td {
+                padding: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="{% static 'images/User0icon.png' %}" alt="Incharge Avatar">
+            <h2>Incharge - HMS</h2>
+        </div>
+        <ul>
+            <li><a href="{% url 'incharge_dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="{% url 'room_allocation_details' %}"><i class="fas fa-bed"></i> Room Allocations</a></li>
+            <li><a href="{% url 'attendance_list' %}"><i class="fas fa-calendar-check"></i> Hosteller Attendance</a></li>
+            <li><a href="{% url 'add_room' %}"><i class="fas fa-plus-circle"></i> Add Rooms</a></li>
+            <li><a href="{% url 'complaint_list' %}"><i class="fas fa-bell"></i> Complaints</a></li>
+            <li><a href="{% url 'admin_logout' %}"><i class="fa fa-power-off"></i>Sign Out!</a></li> 
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Hostel Management System - Incharge Panel</h1>
+            <a href="{% url 'hstlin_logout' %}" class="logout-btn">Logout</a>
+        </header>
+        <h1>Complaints</h1>
+        <div class="table-container">
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Date&Time</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for complaint in complaints %}
+                    <tr>
+                        <td>{{ complaint.category }}</td>
+                        <td>{{ complaint.description }}</td>
+                        <td>{{ complaint.status }}</td>
+                        <td>{{ complaint.date }}</td>
+                        <td><a href="{% url 'complaint_detail' complaint.id %}">View</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

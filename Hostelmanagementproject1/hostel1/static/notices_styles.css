@@ -1,0 +1,80 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+  }
+  
+  /* Container for the notice board */
+  .container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+  }
+  
+  /* Heading styles */
+  h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Notice styles */
+  .notice {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+  }
+  
+  .notice:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  /* Notice title styles */
+  .notice h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+    color: #007BFF;
+  }
+  
+  .notice p {
+    margin: 0;
+    line-height: 1.6;
+  }
+  
+  .notice em {
+    font-size: 0.9em;
+    color: #888;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 600px) {
+    .container {
+      padding: 10px;
+    }
+  
+    h2 {
+      font-size: 1.8em;
+    }
+  
+    .notice {
+      padding: 15px;
+    }
+  
+    .notice h3 {
+      font-size: 1.3em;
+    }
+  }
+  

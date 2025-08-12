@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin Dashboard{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'admin_dashstyles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    {% block head %}{% endblock %}
+    {% block extra_css %}{% endblock %}
+    <style>
+        .incharge-details {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .incharge-details h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .incharge-details table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+        }
+
+        .incharge-details table th, .incharge-details table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .incharge-details table th {
+            background-color: #2196F3;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .incharge-details table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .incharge-details table tr:hover {
+            background-color: #ddd;
+            cursor: pointer;
+        }
+
+        .incharge-details table td {
+            color: #333;
+        }
+
+        .incharge-details table th, .incharge-details table td {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .incharge-details table th:hover, .incharge-details table td:hover {
+            background-color: #64B5F6;
+            color: white;
+        }
+        <style>
+            .hosteller-details {
+                width: 80%;
+                margin: auto;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+    
+            .hosteller-details h2 {
+                text-align: center;
+                color: #333;
+                margin-bottom: 20px;
+                font-family: 'Arial', sans-serif;
+            }
+    
+            .hosteller-details table {
+                width: 100%;
+                border-collapse: collapse;
+                font-family: 'Arial', sans-serif;
+                font-size: 16px;
+            }
+    
+            .hosteller-details table th, .hosteller-details table td {
+                padding: 12px;
+                border: 1px solid #ddd;
+                text-align: left;
+            }
+    
+            .hosteller-details table th {
+                background-color: #4CAF50;
+                color: white;
+                text-transform: uppercase;
+            }
+    
+            .hosteller-details table tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+    
+            .hosteller-details table tr:hover {
+                background-color: #ddd;
+                cursor: pointer;
+            }
+    
+            .hosteller-details table td {
+                color: #333;
+            }
+    
+            .hosteller-details table th, .hosteller-details table td {
+                transition: all 0.2s ease-in-out;
+            }
+    
+            .hosteller-details table th:hover, .hosteller-details table td:hover {
+                background-color: #4CAF50;
+                color: white;
+            }
+            
+        </style>
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="{% static 'images/admin-icn.png' %}" alt="Admin_Icon" style="vertical-align: middle;">
+            <h2>Admin HMS</h2>
+        </div>
+        <ul>
+            <li><a href="{% url 'admin_dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="{% url 'incharge_details' %}"><i class="fas fa-user-shield"></i> Hostel Incharge</a></li>
+            <li><a href="{% url 'hosteller_details' %}"><i class="fas fa-users"></i> Hosteller</a></li>
+            <li><a href="{% url 'notice_list' %}"><i class="fas fa-sticky-note"></i> Notice</a></li>
+            <li><a href="{% url 'admin_logout' %}"><i class="fa fa-power-off"></i>Sign Out</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>HMS - Admin Panel</h1>
+            <a href="{% url 'admin_logout' %}" class="logout-btn">Logout</a>
+        </header>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

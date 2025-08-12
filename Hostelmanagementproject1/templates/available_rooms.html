@@ -1,0 +1,121 @@
+{% extends "base-hstlr.html" %}
+
+{% block title %}Available Rooms{% endblock %}
+
+{% block content %}
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .messages {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .messages li {
+            background-color: #ffdddd;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-left: 6px solid #f44336;
+        }
+        .messages .success {
+            background-color: #ddffdd;
+            border-color: #4CAF50;
+        }
+        .messages .warning {
+            background-color: #ffffdd;
+            border-color: #ffeb3b;
+        }
+        .messages .error {
+            background-color: #ffdddd;
+            border-color: #f44336;
+        }
+        button, .badge {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        .badge-danger {
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+    </style>
+
+    <h1>Available Rooms</h1>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <table>
+        <thead>
+            <tr>
+                <th>Room Number</th>
+                <th>Capacity</th>
+                <th>Current Capacity</th>
+                <th>Is Vacant</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for room in rooms %}
+                <tr>
+                    <td>{{ room.room_number }}</td>
+                    <td>{{ room.capacity }}</td>
+                    <td>{{ room.current_capacity }}</td>
+                    <td>{{ room.is_vacant|yesno:"Yes,No" }}</td>
+                    <td>
+                        {% if pending_request_exists %}
+                            <button class="btn-secondary" disabled>Request sent successfully</button>
+                        {% elif room.is_vacant %}
+                            {% if room.id in room_request_map %}
+                                {% with room_request=room_request_map.room.id %}
+                                    {% if room_request.is_approved %}
+                                        Room Allocated
+                                    {% else %}
+                                        <button class="btn-secondary" disabled>Request sent</button>
+                                    {% endif %}
+                                {% endwith %}
+                            {% else %}
+                                <form action="{% url 'request_entry' room.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn-primary">Request Room</button>
+                                </form>
+                            {% endif %}
+                        {% else %}
+                            <span class="badge badge-danger">Room Full</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

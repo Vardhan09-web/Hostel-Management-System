@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pending Room Allocations</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'incharge_dstyles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="{% static 'images/User0icon.png' %}" alt="Incharge Avatar">
+            <h2>Incharge - HMS</h2>
+        </div>
+        <ul>
+            <li><a href="{% url 'incharge_dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="{% url 'pending_room_allocations' %}"><i class="fas fa-bed"></i>Room Allocations</a></li>
+            <li><a href="{% url 'attendance_list' %}"><i class="fas fa-calendar-check"></i> Hosteller Attendance</a></li>
+            <li><a href="{% url 'add_room' %}"><i class="fas fa-plus-circle"></i> Add Rooms</a></li>
+            <li><a href="#"><i class="fas fa-bell"></i> Complaints</a></li>
+            <li><a href="{% url 'admin_logout' %}"><i class="fa fa-power-off"></i>Sign Out</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Pending Room Allocations</h1>
+            <a href="{% url 'incharge_dashboard' %}" class="logout-btn">Back</a>
+        </header>
+        <h2>Room Allocation</h2>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Hosteller Id</th>
+                    <th>Requested Room Number</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in pending_requests %}
+                    <tr>
+                        <td>{{ request.hosteller.hstlr_id }}</td>
+                        <td>{{ request.assigned_room_number }}</td>
+                        <td>
+                            <form action="{% url 'approve_request' request.id %}" method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="request_id" value="{{ request.id }}">
+                                <label for="room_number">Room Number:</label>
+                                <select name="room_id" required>
+                                    {% for room in available_rooms %}
+                                        <option value="{{ room.id }}">{{ room.room_number }}</option>
+                                    {% endfor %}
+                                </select>
+                                <button type="submit" name="allocate_room">Allocate</button>
+                            </form>
+                            <form action="{% url 'deny_request' request.id %}" method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit">Reject</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

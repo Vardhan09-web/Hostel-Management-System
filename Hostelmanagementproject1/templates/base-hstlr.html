@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hosteller Dashboard{% endblock %}</title>
+    {% load static %}
+    
+    <link rel="stylesheet" href="{% static 'h_dashstyles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        /* Styles for the form */
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .form-control textarea {
+            resize: vertical;
+        }
+
+        .submit-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+        .view-complaints-link a{
+            margin-top:10px;
+            text-decoration:none;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="{% static 'images/user-icon5.jpg' %}" alt="Profile Picture">
+            <p id="tt"><b>{{ hosteller.hstlr_fname }} {{ hosteller.hstlr_lname }}</b></p>
+        </div>
+        <ul>
+            <li><a href="{% url 'hosteller_dashboard' hosteller.hstlr_id %}"><i class="fa-solid fa-gauge"></i>Dashboard</a></li>
+            <li><a href="{% url 'attendance_record' hosteller.hstlr_id %}"><i class="fa-solid fa-calendar-check"></i>View Attendance</a></li>
+            <li><a href="{% url 'available_rooms' hosteller.hstlr_id %}"><i class="fa-solid fa-door-open"></i>Room Request</a></li>
+            <li><a href="{% url 'password_reset' %}"><i class="fa-solid fa-lock"></i>Change Password</a></li>
+            <li><a href="{% url 'submit_complaint' %}"><i class="fa-solid fa-exclamation-triangle"></i>Make Complaint</a></li>
+            <li><a href="{% url 'admin_logout' %}"><i class="fa fa-sign-out"></i>Sign Out!</a></li> 
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1><i class="fa-solid fa-bars"></i> HMS - HOSTELLER DASHBOARD</h1>
+            <h2>Welcome, {{ hosteller.hstlr_fname }} {{ hosteller.hstlr_lname }}</h2>
+            <a href="{% url 'hstlr_logout' %}" class="logout-btn">Logout</a>
+        </header>
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    {% block additional_styles %}
+    {% endblock %}
+
+    {% block additional_scripts %}
+    {% endblock %}
+</body>
+</html>

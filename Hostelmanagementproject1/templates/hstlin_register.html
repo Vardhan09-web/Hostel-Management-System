@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hostel Incharge Registration</title>
+    {% load static %}
+    <link rel='stylesheet' href="{% static 'incharge_regstyles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <h2><i class="fa-sharp fa-solid fa-user-tie"></i>      Hostel-Incharge Registration Form</h2>
+        <form id="registration-form" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="fname"><i class="fas fa-user"></i> First Name:</label>
+                <input type="text" id="fname" name="fname" required>
+            </div>
+            <div class="form-group">
+                <label for="lname"><i class="fas fa-user"></i> Last Name:</label>
+                <input type="text" id="lname" name="lname" required>
+            </div>
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phn"><i class="fas fa-phone"></i> Phone Number:</label>
+                <input type="text" id="phn" name="phn" required>
+            </div>
+            <div class="form-group">
+                <label for="admission_date"><i class="fas fa-calendar-alt"></i> Joining Date:</label>
+                <input type="date" id="admission_date" name="admission_date" required>
+            </div>
+            <div class="form-group">
+                <label for="address"><i class="fas fa-home"></i> Address:</label>
+                <textarea id="address" name="address" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="gender"><i class="fas fa-venus-mars"></i> Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="O">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="passwd"><i class="fas fa-lock"></i> Password:</label>
+                <input type="password" id="passwd" name="passwd" required>
+            </div>
+            <button type="submit"><i class="fas fa-user-plus"></i> Register</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.borderColor = '#007bff';
+                });
+                input.addEventListener('blur', function() {
+                    this.style.borderColor = '#ddd';
+                });
+            });
+
+            document.getElementById('registration-form').addEventListener('submit', function(event) {
+                var isValid = true;
+
+                // First name validation
+                var fname = document.getElementById('fname').value;
+                if (fname.trim() === "") {
+                    isValid = false;
+                    alert("First Name is required");
+                }
+
+                // Last name validation
+                var lname = document.getElementById('lname').value;
+                if (lname.trim() === "") {
+                    isValid = false;
+                    alert("Last Name is required");
+                }
+
+                // Email validation
+                var email = document.getElementById('email').value;
+                var emailPattern = /^[^ ]+@gmail\.com$/;
+                if (!email.match(emailPattern)) {
+                    isValid = false;
+                    alert("Please enter a valid Gmail address");
+                }
+
+                // Phone validation
+                var phone = document.getElementById('phn').value;
+                if (phone.trim() === "" || phone.length != 10) {
+                    isValid = false;
+                    alert("Please enter a valid 10-digit phone number");
+                }
+
+                // Gender validation
+                var gender = document.getElementById('gender').value;
+                if (gender === "") {
+                    isValid = false;
+                    alert("Please select a gender");
+                }
+
+                // Password validation
+                var password = document.getElementById('passwd').value;
+                if (password.length < 6) {
+                    isValid = false;
+                    alert("Password must be at least 6 characters long");
+                }
+
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

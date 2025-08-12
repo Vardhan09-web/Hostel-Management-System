@@ -1,0 +1,18 @@
+<!-- templates/hostel/room_request_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Request Form</title>
+</head>
+<body>
+    <h2>Room Request Form</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="room_id">Room ID:</label>
+        <input type="text" id="room_id" name="room_id" required>
+        <button type="submit">Submit Request</button>
+    </form>
+</body>
+</html>

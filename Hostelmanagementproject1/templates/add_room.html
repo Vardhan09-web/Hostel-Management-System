@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Incharge Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'incharge_dstyles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'addroomstyles.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="{% static 'images/User0icon.png' %}" alt="Incharge Avatar">
+            <h2>Incharge - HMS</h2>
+        </div>
+        <ul>
+            <li><a href="{% url 'incharge_dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="{% url 'room_allocation_details' %}"><i class="fas fa-bed"></i> Room Allocations</a></li>
+            <li><a href="{% url 'attendance_list' %}"><i class="fas fa-calendar-check"></i> Hosteller Attendance</a></li>
+            <li><a href="{% url 'add_room' %}"><i class="fas fa-plus-circle"></i> Add Rooms</a></li>
+            <li><a href="{% url 'complaint_list' %}"><i class="fas fa-bell"></i> Complaints</a></li>
+            <li><a href="{% url 'admin_logout' %}"><i class="fas fa-power-off"></i> Sign Out</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Hostel Management System - Incharge Panel</h1>
+            <a href="{% url 'hstlin_logout' %}" class="logout-btn">Logout</a>
+        </header>
+<body>
+    <div class="container">
+        <h1>Add Room</h1>
+        {% comment %} {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="messages {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %} {% endcomment %}
+        <form method="POST" action="{% url 'add_room' %}">
+            {% csrf_token %}
+            <label for="room_number">Room Number:</label>
+            <input type="text" name="room_number" id="room_number" required>
+            <label for="capacity">Capacity:</label>
+            <input type="number" name="capacity" id="capacity" required>
+            <label for="is_vacant">Is Vacant:</label>
+            <select name="is_vacant" id="is_vacant" required>
+                <option value="True">Yes</option>
+                <option value="False">No</option>
+            </select>
+            <button type="submit">Add Room</button>
+        </form>
+        {% comment %} <a class="back-link" href="{% url 'incharge_dashboard' %}">Back to Dashboard</a> {% endcomment %}
+    </div>
+</body>
+</html>

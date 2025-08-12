@@ -1,0 +1,23 @@
+{% extends "base-hstlr.html" %}
+
+{% block title %}Request Room{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Request Room</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button id="requestRoomButton" type="submit" onclick="disableButton(event)">Request Room</button>
+    </form>
+</div>
+
+<script>
+    function disableButton(event) {
+        // Disable the button to prevent multiple clicks
+        document.getElementById("requestRoomButton").disabled = true;
+
+        // Proceed with form submission
+        event.target.form.submit();
+    }
+</script>
+{% endblock %}

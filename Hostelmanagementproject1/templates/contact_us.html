@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}?v=1.0">
+</head>
+<body>
+<div class="contact-container">
+    <h1>Contact Us</h1>
+    <p>If you have any questions or inquiries, please fill out the form below:</p>
+    <form method="POST" action="{% url 'contact_us' %}">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+        
+        <button type="submit">Send</button>
+    </form>
+    {% if success %}
+        <p>Thank you for your message. We will get back to you shortly.</p>
+    {% endif %}
+    
+    <div class="contact-info">
+        <h2>Our Contact Information</h2>
+        <p><strong>Phone:</strong> +1 8977 1828 10<br>+91 8000 9726 61</p>
+        <p><strong>Email:</strong> teamhms04@gmail.com</p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+{% comment %} {% extends 'base_admin.html' %}
+{% block content %} {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Notice</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <style>
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .create-notice {
+            padding: 20px;
+        }
+
+        .create-notice h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .create-notice label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .create-notice input[type="text"], 
+        .create-notice textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+        }
+
+        .create-notice button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'Arial', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .create-notice button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            .create-notice input[type="text"], 
+            .create-notice textarea {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .create-notice button[type="submit"] {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="create-notice">
+        <h2>Create Notice</h2>
+        <form method="post">
+          {% csrf_token %}
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required><br>
+          <label for="content">Content:</label>
+          <textarea id="content" name="content" required></textarea><br>
+          <button type="submit">Create</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+{% comment %} {% endblock %} {% endcomment %}

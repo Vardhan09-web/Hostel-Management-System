@@ -1,0 +1,187 @@
+body {
+    display: flex;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+.sidebar {
+    width: 250px;
+    background: #343a40;
+    color: #fff;
+    height: 100vh;
+    position: fixed;
+    padding: 20px 0;
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar-header img {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    text-align: left;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar ul li a i {
+    margin-right: 10px;
+}
+
+.sidebar ul li a:hover {
+    background: #495057;
+    color: #fff;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.logout-btn {
+    background: #fc1436;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 20px;
+    text-decoration: solid;
+    
+}
+.logout-btn:hover{
+    
+    color:  black;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.card {
+    background: #dfe9e8;
+    padding: 20px;
+    border-radius: 2px;
+    flex: 1 1 200px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    background-color: #fafafa;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
+}
+
+.card-header i {
+    margin-right: 10px;
+}
+.card-header a{
+    text-decoration: none;
+    text-decoration-color: black;
+}
+
+.number {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.allocated-rooms {
+    color: rgb(11, 12, 11);
+}
+
+.vacant-rooms {
+    color: rgb(12, 12, 12);
+}
+
+.total-hostellers {
+    color: rgb(13, 13, 14);
+}
+
+.attendance-rate {
+    color: rgb(12, 12, 12);
+}
+
+.pending-requests {
+    color: rgb(12, 12, 12);
+}
+
+.rooms-details {
+    color: rgb(12, 12, 12);
+}
+
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #f8f9fa;
+}
+
+.btn{
+    padding: 10px;
+    color: red;
+    font-size: 15px;
+    background-color: powderblue;
+    font-weight: bolder;
+    margin-top: 5px;
+}
+
+.notice-board {
+    margin-top: 200px;
+    padding: 30px;
+    background: #fdcfcffd;
+    border-radius: -5px;
+    box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.1);;
+}
+.notice-board h2 {
+    margin-top: 0;
+    text-align: center;
+}

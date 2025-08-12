@@ -1,0 +1,13 @@
+<!-- templates/admin_approve_requests.html -->
+<h2>Pending Admission Requests</h2>
+<form method="post">
+    {% csrf_token %}
+    <ul>
+        {% for request in admission_requests %}
+        <li>
+            {{ request.hosteller.hstlr_fname }} {{ request.hosteller.hstlr_lname }}
+            <button type="submit" name="admission_request_id" value="{{ request.id }}">Approve</button>
+        </li>
+        {% endfor %}
+    </ul>
+</form>

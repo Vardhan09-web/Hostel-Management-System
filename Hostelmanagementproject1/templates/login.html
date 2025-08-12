@@ -1,0 +1,30 @@
+
+<!-- Admin login.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login_styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        {% if success_message %}
+            <p style="color: green;">{{ success_message }}</p>
+        {% endif %}
+        {% if error_messages %}
+            <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <h2>ADMIN LOGIN  </h2>
+            
+            <h4>Enter Registered name and password</h4>
+            
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
+

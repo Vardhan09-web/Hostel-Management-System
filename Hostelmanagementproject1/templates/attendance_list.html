@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Incharge Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'incharge_dstyles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        h2 {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        table th, table td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        table th {
+            background-color: #333;
+            color: #fff;
+        }
+        table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        .take-attendance, .view-attendance {
+            font-size: 20px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+        .take-attendance:hover, .view-attendance:hover {
+            color: #007bff;
+        }
+        @media (max-width: 768px) {
+            table th, table td {
+                padding: 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            table th, table td {
+                padding: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="{% static 'images/User0icon.png' %}" alt="Incharge Avatar">
+            <h2>Incharge - HMS</h2>
+        </div>
+        <ul>
+            <li><a href="{% url 'incharge_dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="{% url 'room_allocation_details' %}"><i class="fas fa-bed"></i> Room Allocations</a></li>
+            <li><a href="{% url 'attendance_list' %}"><i class="fas fa-calendar-check"></i> Hosteller Attendance</a></li>
+            <li><a href="{% url 'add_room' %}"><i class="fas fa-plus-circle"></i> Add Rooms</a></li>
+            <li><a href="{% url 'complaint_list' %}"><i class="fas fa-bell"></i> Complaints</a></li>
+            <li><a href="{% url 'admin_logout' %}"><i class="fa fa-power-off"></i>Sign Out!</a></li> 
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Hostel Management System - Incharge Panel</h1>
+            <a href="{% url 'hstlin_logout' %}" class="logout-btn">Logout</a>
+        </header>
+        <h2>Record Attendance</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Branch</th>
+                    <th>Take Attendance</th>
+                    <th>View Attendance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for branch_code, branch_name in branches %}
+                <tr>
+                    <td>{{ branch_name }}</td>
+                    <td><a href="{% url 'take_attendance' %}?branch={{ branch_code }}"><button class="take-attendance"><i class="fas fa-plus-circle"></i></button></a></td>
+                    <td><a href="{% url 'view_attendance' %}?branch={{ branch_code }}"><button class="view-attendance"><i class="fas fa-eye"></i></button></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

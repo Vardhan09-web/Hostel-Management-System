@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQAlAMBIgACEQEDEQH/xAAZAAEBAQEBAQAAAAAAAAAAAAACAQADBgX/xAAkEAEBAAICAgICAgMAAAAAAAAAAQIRITESQQNRcZEysSJhgf/EABsBAAMBAQEBAQAAAAAAAAAAAAIDBAEHBQAG/8QAGhEBAQEBAQEBAAAAAAAAAAAAAAECESESA//aAAwDAQACEQMRAD8A+/Ju8n4T7DHt03w/UVzicG4Sex8J9lcoFyfTpmZEuEC4yFscryNRnIa5W4T7pySflK3qnGXHLGS9p4Rc/wCSWinT85g5YT7oZYSe6e3P5KOdU5g3Hlr8c9WtMvtsst9CUYg+E68rsc8JjOLSHO8abOqc5c7AyOhkZD8wWTbCN49FO1qRq85z2ejaNWpWw/GUG1aIlGY6YXc19NXPfjXTe2cV4jjnju8BnHW9jd0cqjOXC3SZ3/F1yx245yY8b/4OU/MC0Vo0cPzG8gyyrWjRyKcxLRqjRKMRkS1RHfL0c7Pxntz3pdvNsc7/ADjZSdaazjXocrzPytfcV5jlnNdi6ZXdc7lq8jh2YNlpYbk1U8onl7jeKcQrUbK65cc8/LiNkUxvk+T1j+3C8lR8TJOHZg75SwtJoanMcqNdrJXPPGSWilPzAoWlQyGpzErIwjuPSDvTbSvOc5xlZd3n0lyC8N3+W8VYhTscptJbtdvuKsRyy4oumWr2Nln+4Z0/MHfGhq3IMsmxRmDvSeXDZXhz2ORRmFtLklo0XFOYuxzvCJl0KRRmBaFp2BlBqMwWZhHcejl1WuW+Oho3p53HOsRfG33P20w1ewqXK+q3inEdMpNb9ueWWl8r4XenG3nm1uYpzCxu8tlsMdSb21u/cEpxGz1ZbpxrtP7cb2LKjMG9OV7dL7cqZD8xtsmtrL6bxTmMOVWjk2KMwdhlSDMcUZgsjC4dx6JKqZPPjnWYLcDRouKMR0z/AIVz8d1PPXrcKfJj7mn3sVYiXHaTCb5dNyzihldN7VOcj8mWpw43tfku6GxyH5jZOdPKgOKcxBq1KI/MbY5NRyy4FFOYmTnlVt2NHIoxEZkEdx6P2OVb2ledxzrEShSoUSjMRO1Ty0JTiJrne1yy42NzG3cbxTmJexq/lL0JRiOdo75WjRxRmENTbN4ozEtDIgzFFOIFS9NUo5FOIm1FRHceht5S1tjXnOcZjCto0SrMSjVo7FFGYlSJa0apzGGkGVbFGY55dituxpkUYjJtKlolOYtDMt7DLtsUYg0bVo0anMZkZpvHoUrUbXnxzrMSpWo2iU4iUbV2FFFGYzTtLRtFxRmFllpyyq0aKRRmJU21GiVYjWjWtQSjEa3Q5NRopFGYlHa0aKKcxmRmncehoszz45xkaNZhKMiNZhRTkKjMJRgaLMKKcoFVhRRgKlZhKMCjMKKchUrM1RlGZhHv/9k=') no-repeat center center/cover; */
+    filter: blur(5px);
+    z-index: -1;
+}
+
+
+.login-container {
+    background-color: #ffffff;
+    padding: 20px;
+    /* border-radius: 8px; */
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    /* max-width: 400px;
+    width: 100%; */
+    text-align: center;
+
+
+    /* background: rgba(255, 255, 255, 0.1); */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 300px;
+
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000000"%3E%3Cpath d="M12 0C5.37 0 0 5.37 0 12c0 3.12 1.22 6.12 3.45 8.35C5.88 21.78 8.88 23 12 23c3.12 0 6.12-1.22 8.35-3.45C22.22 18.88 23 15.88 23 12c0-6.63-5.37-12-12-12zm-1 20h2v-2h-2v2zm4.55-5.45C14.62 15.6 13.36 16 12 16s-2.62-.4-3.55-1.45C7.4 13.62 7 12.36 7 11c0-1.66.4-2.92 1.45-3.95C9.38 6.4 10.64 6 12 6s2.62.4 3.55 1.45C16.6 8.38 17 9.64 17 11c0 1.36-.4 2.62-1.45 3.55zM16 2.02c1.84 1.14 3 3.14 3 5.48 0 2.08-.82 4.08-2.32 5.58C16.08 10.9 14.08 10 12 10s-4.08.9-5.68 2.08C5.82 11.58 5 9.58 5 7.5c0-2.34 1.16-4.34 3-5.48 1.5-.94 3.38-1.42 5.32-1.42s3.82.48 5.32 1.42z"%3E%3C/path%3E%3C/svg%3E');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+.form{
+    background-color: white;
+    padding: 20px;
+
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+h4 {
+    margin-bottom: 15px;
+    color: #666;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.img{
+    margin-left:102px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 20px 12px 40px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.form-image {
+    width: 10px;
+    height: 10px;
+}

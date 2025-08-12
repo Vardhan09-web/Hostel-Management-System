@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Incharge Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'incharge_dstyles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="{% static 'images/User0icon.png' %}" alt="Incharge Avatar">
+            <h2>Incharge - HMS</h2>
+        </div>
+        <ul>
+            <li><a href="{% url 'incharge_dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="{% url 'room_allocation_details' %}"><i class="fas fa-bed"></i> Room Allocations</a></li>
+            <li><a href="{% url 'attendance_list' %}"><i class="fas fa-calendar-check"></i> Hosteller Attendance</a></li>
+            <li><a href="{% url 'add_room' %}"><i class="fas fa-plus-circle"></i> Add Rooms</a></li>
+            <li><a href="{% url 'complaint_list' %}"><i class="fas fa-bell"></i> Complaints</a></li>
+            <li><a href="{% url 'admin_logout' %}"><i class="fa fa-power-off"></i> Sign Out!</a></li> 
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Hostel Management System - Incharge Panel</h1>
+            <a href="{% url 'hstlin_logout' %}" class="logout-btn">Logout</a>
+        </header>
+        <div class="cards">
+            <div class="card" style="background-color: #1abc9c;">
+                <div class="card-header">
+                    <h3><i class="fas fa-bed"></i> Allocated Rooms</h3>
+                    <span class="number allocated-rooms">{{ allocated_rooms.count }}</span>
+                </div>
+            </div>
+            <div class="card" style="background-color: #3498db;">
+                <div class="card-header">
+                    <h3><i class="fas fa-door-open"></i> Vacant Rooms</h3>
+                    <span class="number vacant-rooms">{{ vacant_rooms.count }}</span>
+                </div>
+            </div>
+            <div class="card" style="background-color: #f39c12;">
+                <div class="card-header">
+                    <h3><i class="fas fa-users"></i> Total Hostellers</h3>
+                    <span class="number total-hostellers">{{ total_hostellers }}</span>
+                </div>
+            </div>
+            <div class="card" style="background-color: #e74c3c;">
+                <div class="card-header">
+                    <h3><i class="fas fa-chart-line"></i> Attendance Rate</h3>
+                    <span class="number attendance-rate">{{attendance_rate|floatformat:2 }}%</span>
+                </div>
+            </div>
+            <div class="card" style="background-color: #8e44ad;">
+                <div class="card-header">
+                    <a href="{% url 'pending_room_allocations' %}"><h3><i class="fas fa-spinner"></i> Pending Allocations</h3></a>
+                    <span class="number pending-requests">{{ pending_requests.count }}</span>
+                </div>
+            </div>
+            <div class="card" style="background-color: #27ae60;">
+                <div class="card-header">
+                    <h3><i class="fas fa-info-circle"></i> Total Rooms</h3>
+                    <span class="number rooms-details">{{total_rooms.count}}</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="notice-board">
+                <h2>Notice Board</h2>
+                {% if latest_notice %}
+                    <p>Posted on {{ latest_notice.created_at }}</p>
+                    <p>{{ latest_notice.content }}</p>
+                {% else %}
+                    <p>No notices available.</p>
+                {% endif %}
+        </div>
+    </div>
+</body>
+</html>

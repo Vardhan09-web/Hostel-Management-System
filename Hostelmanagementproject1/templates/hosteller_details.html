@@ -1,0 +1,32 @@
+{% extends 'base_admin.html' %}
+{% block title %}Hosteller Details{% endblock %}
+
+{% block content %}
+<div class="hosteller-details">
+    <h2>Hosteller Details</h2>
+    <table class="hosteller-table">
+        <tr>
+            <th>Hosteller ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>Branch</th>
+            <th>Status</th>
+        </tr>
+        {% for hosteller in hostellers %}
+        <tr>
+            <td>{{ hosteller.hstlr_id }}</td>
+            <td>{{ hosteller.hstlr_fname }}</td>
+            <td>{{ hosteller.hstlr_lname }}</td>
+            <td>{{ hosteller.hstlr_email }}</td>
+            <td>{{ hosteller.hstlr_phn }}</td>
+            <td>{{ hosteller.get_hstlr_gender_display }}</td>
+            <td>{{ hosteller.get_branch_display }}</td>
+            <td>{{ hosteller.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

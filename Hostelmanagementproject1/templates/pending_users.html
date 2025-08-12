@@ -1,0 +1,32 @@
+<!-- pending_users.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pending Users</title>
+    <a href="{% url 'admin_dashboard' %}" class="back-btn">Back to Dashboard</a>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'pen_hstlrstyles.css' %}">
+</head>
+<body>
+    <h2>Pending Hostellers</h2>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        {% for user in pending_users %}
+        <tr>
+            <td>{{ user.hstlr_fname }}</td>
+            <td>{{ user.hstlr_lname }}</td>
+            <td>{{ user.hstlr_email }}</td>
+            <td>
+                <a href="{% url 'approve_user' user.hstlr_id %}">Approve</a> | 
+                <a href="{% url 'reject_user' user.hstlr_id %}">Reject</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

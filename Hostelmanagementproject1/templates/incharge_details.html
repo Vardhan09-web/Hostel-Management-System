@@ -1,0 +1,30 @@
+{% extends 'base_admin.html' %}
+{% block title %}Incharge Details{% endblock %}
+
+{% block content %}
+    <div class="incharge-details">
+        <h2>Incharge Details</h2>
+        <table>
+            <tr>
+                <th>Incharge ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Admission Date</th>
+                <th>Status</th>
+            </tr>
+            {% for incharge in incharges %}
+            <tr>
+                <td>{{ incharge.incharge_id }}</td>
+                <td>{{ incharge.fname }}</td>
+                <td>{{ incharge.lname }}</td>
+                <td>{{ incharge.email }}</td>
+                <td>{{ incharge.phn }}</td>
+                <td>{{ incharge.admission_date }}</td>
+                <td>{{ incharge.status }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

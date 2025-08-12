@@ -1,0 +1,340 @@
+.about-content {
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.about-content h2, .about-content h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.about-content p {
+    color: #666;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.about-content ul {
+    list-style-type: disc;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.about-content li {
+    margin-bottom: 10px;
+}
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  /* Container for the notice list */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f7d7d7;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding-bottom: 50px;
+    margin-top: 100px;
+  }
+  
+  /* Heading styles */
+  h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  /* Link styles */
+  a {
+    text-decoration: none;
+    color: #007BFF;
+  }
+  /* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+  }
+  
+  /* Container for the notice board */
+  .container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+  }
+  
+  /* Heading styles */
+  h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Notice styles */
+  .notice {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+  }
+  
+  .notice:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  /* Notice title styles */
+  .notice h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+    color: #007BFF;
+  }
+  
+  .notice p {
+    margin: 0;
+    line-height: 1.6;
+  }
+  
+  .notice em {
+    font-size: 0.9em;
+    color: #888;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 600px) {
+    .container {
+      padding: 10px;
+    }
+  
+    h2 {
+      font-size: 1.8em;
+    }
+  
+    .notice {
+      padding: 15px;
+    }
+  
+    .notice h3 {
+      font-size: 1.3em;
+    }
+  }
+  /* General Styles */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the form */
+.container {
+    background: #fff;
+    padding: 20px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Heading styles */
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #007BFF;
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Label styles */
+label {
+    font-size: 1em;
+    text-align: left;
+    color: #555;
+}
+
+/* Input styles */
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* Button styles */
+button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.back-btn{
+    color:#333;
+    background-color: #ec4630;
+    padding: 9px;
+    margin-top: -618px;
+    margin-left: 5x;
+    font-size: 30px;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    label {
+        font-size: 0.9em;
+    }
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.notice-container {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.notice-container.dark-theme {
+    background-color: #2c3e50;
+    color: white;
+}
+
+button#toggle-theme {
+    margin-top: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.previous-notices {
+    margin-top: 40px;
+}
+
+.previous-notices h3 {
+    margin-bottom: 20px;
+}
+
+.previous-notice {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+  
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Create New Notice link */
+  .create-notice {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .create-notice:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Notice list styles */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  li:last-child {
+    border-bottom: none;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 600px) {
+    .container {
+      padding: 10px;
+    }
+  
+    h2 {
+      font-size: 1.5em;
+    }
+  
+    .create-notice {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
